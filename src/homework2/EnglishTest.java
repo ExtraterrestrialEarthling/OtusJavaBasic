@@ -1,7 +1,5 @@
 package homework2;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
 
 public class EnglishTest {
@@ -40,8 +38,6 @@ public class EnglishTest {
         keys[2] = 4;
 
 
-
-
         // Введение:
         System.out.println("Пройдите тест на определение уровня английского языка.");
         System.out.println("Нажмите что-нибудь, чтобы продолжить...");
@@ -55,15 +51,14 @@ public class EnglishTest {
         // Результаты:
         if (result == 0) {
             System.out.println("Ваш уровень: А1. Вы только начинаете свой путь. Успехов в изучении!");
-        } else if (result == 1){
+        } else if (result == 1) {
             System.out.println("Ваш уровень: А2. Вы уже кое-что знаете, но вам еще предстоит многое изучить.");
-        } else if (result ==2){
+        } else if (result == 2) {
             System.out.println("Ваш уровень: B1. Вы можете уверенно вести беседы на английском на различные темы.");
-        } else if(result ==3){
-            System.out.println("Поздравляем! Ваш уровень: C1. Вы свободно говорите на английском, но помните:"+
+        } else if (result == 3) {
+            System.out.println("Поздравляем! Ваш уровень: C1. Вы свободно говорите на английском, но помните:" +
                     " нет предела совершенству!");
         }
-
 
 
     }
@@ -93,17 +88,17 @@ public class EnglishTest {
     }
 
     // Метод проверяет, правильный ли ответ:
-public static void check(String[] options, int key){
+    public static void check(String[] options, int key) {
         int input;
         do {
             input = readInt(scanner.next());
-            if(input<1||input>options.length){
+            if (input < 1 || input > options.length) {
                 System.out.printf("Пожалуйста, введите число от 1 до %d!\n", options.length);
                 input = -1;
             }
-        } while (input==-1);
+        } while (input == -1);
 
-        if (input==key+1){
+        if (input == key + 1) {
             result++;
         }
 
