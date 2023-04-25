@@ -1,51 +1,74 @@
 package homework2;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 public class EnglishTest {
     static Scanner scanner = new Scanner(System.in);
     static int result;
     static String[] questions = new String[3];
+    static String[][] options = new String[3][];
+    static int[] keys = new int[3];
 
     public static void main(String[] args) {
         result = 0;
 
-        // Добавляем в архив вопросы
-        questions[0] = "The doctor ___ in the office.\n"+
-                "1) am\n2) is\n3) are";
-        questions[1] = "If I ___ you, I would do this.\n"+
-                "1) were\n2) am\n3) is\n4) are";
-        questions[2] = "She is late. She ___ missed the bus.\n"+
-                "1) should have\n2) can't have\n3) couldn't\n4) was able to\n5) must have";
+        // Р”РѕР±Р°РІР»СЏРµРј РІ Р°СЂС…РёРІС‹ РІРѕРїСЂРѕСЃС‹, РІР°СЂРёР°РЅС‚С‹ РѕС‚РІРµС‚РѕРІ Рё РєР»СЋС‡Рё:
+        questions[0] = "The doctor ___ in the office.";
+        options[0] = new String[3];
+        options[0][0] = "am";
+        options[0][1] = "is";
+        options[0][2] = "are";
+        keys[0] = 1;
+
+        questions[1] = "If I ___ you, I would do this.";
+        options[1] = new String[4];
+        options[1][0] = "were";
+        options[1][1] = "am";
+        options[1][2] = "is";
+        options[1][3] = "are";
+        keys[1] = 0;
+
+        questions[2] = "She is late. She ___ missed the bus.";
+        options[2] = new String[5];
+        options[2][0] = "should have";
+        options[2][1] = "can't have";
+        options[2][2] = "couldn't";
+        options[2][3] = "was able to";
+        options[2][4] = "must have";
+        keys[2] = 4;
 
 
-        // Введение
-        System.out.println("Пройдите тест на определение уровня английского языка.");
-        System.out.println("Нажмите что-нибудь, чтобы продолжить...");
+
+
+        // Р’РІРµРґРµРЅРёРµ:
+        System.out.println("РџСЂРѕР№РґРёС‚Рµ С‚РµСЃС‚ РЅР° РѕРїСЂРµРґРµР»РµРЅРёРµ СѓСЂРѕРІРЅСЏ Р°РЅРіР»РёР№СЃРєРѕРіРѕ СЏР·С‹РєР°.");
+        System.out.println("РќР°Р¶РјРёС‚Рµ С‡С‚Рѕ-РЅРёР±СѓРґСЊ, С‡С‚РѕР±С‹ РїСЂРѕРґРѕР»Р¶РёС‚СЊ...");
         scanner.nextLine();
 
 
-        // Тест
-        System.out.println("Выберете правильный вариант:");
-        askAndCheck(questions[0], 3, 2);
-        askAndCheck(questions[1], 4, 1);
-        askAndCheck(questions[2], 5, 5);
+        // РўРµСЃС‚:
+        System.out.println("Р’С‹Р±РµСЂРµС‚Рµ РїСЂР°РІРёР»СЊРЅС‹Р№ РІР°СЂРёР°РЅС‚:");
+        startTest();
 
-        // Результаты
+        // Р РµР·СѓР»СЊС‚Р°С‚С‹:
         if (result == 0) {
-            System.out.println("Ваш уровень: А1. Вы только начинаете свой путь. Успехов в изучении!");
+            System.out.println("Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: Рђ1. Р’С‹ С‚РѕР»СЊРєРѕ РЅР°С‡РёРЅР°РµС‚Рµ СЃРІРѕР№ РїСѓС‚СЊ. РЈСЃРїРµС…РѕРІ РІ РёР·СѓС‡РµРЅРёРё!");
         } else if (result == 1){
-            System.out.println("Ваш уровень: А2. Вы уже кое-что знаете, но вам еще предстоит многое изучить.");
+            System.out.println("Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: Рђ2. Р’С‹ СѓР¶Рµ РєРѕРµ-С‡С‚Рѕ Р·РЅР°РµС‚Рµ, РЅРѕ РІР°Рј РµС‰Рµ РїСЂРµРґСЃС‚РѕРёС‚ РјРЅРѕРіРѕРµ РёР·СѓС‡РёС‚СЊ.");
         } else if (result ==2){
-            System.out.println("Ваш уровень: B1. Вы можете уверенно вести беседы на английском на различные темы.");
+            System.out.println("Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: B1. Р’С‹ РјРѕР¶РµС‚Рµ СѓРІРµСЂРµРЅРЅРѕ РІРµСЃС‚Рё Р±РµСЃРµРґС‹ РЅР° Р°РЅРіР»РёР№СЃРєРѕРј РЅР° СЂР°Р·Р»РёС‡РЅС‹Рµ С‚РµРјС‹.");
         } else if(result ==3){
-            System.out.println("Поздравляем! Ваш уровень: C1. Вы свободно говорите на английском, но помните:"+
-                    " нет предела совершенству!");
+            System.out.println("РџРѕР·РґСЂР°РІР»СЏРµРј! Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: C1. Р’С‹ СЃРІРѕР±РѕРґРЅРѕ РіРѕРІРѕСЂРёС‚Рµ РЅР° Р°РЅРіР»РёР№СЃРєРѕРј, РЅРѕ РїРѕРјРЅРёС‚Рµ:"+
+                    " РЅРµС‚ РїСЂРµРґРµР»Р° СЃРѕРІРµСЂС€РµРЅСЃС‚РІСѓ!");
         }
+
+
 
     }
 
-    // метод, чтобы считать int или вернуть значение по умолчанию, если int не найден
+    // РњРµС‚РѕРґ, С‡С‚РѕР±С‹ СЂР°СЃРїРѕР·РЅР°С‚СЊ int РёР»Рё РІРµСЂРЅСѓС‚СЊ Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РµСЃР»Рё int РЅРµ РЅР°Р№РґРµРЅ:
     public static int readInt(String str) {
         try {
             return Integer.parseInt(str);
@@ -55,19 +78,32 @@ public class EnglishTest {
     }
 
 
-    // Задаем вопрос и проверяем, верный ли ответ
-    public static void askAndCheck(String question, int numberOfOptions, int correctAnswer){
-        System.out.println(question);
+    // РњРµС‚РѕРґ РїРµС‡Р°С‚Р°РµС‚ РІРµСЃСЊ С‚РµСЃС‚:
+    public static void startTest() {
+
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            for (int k = 0; k < options[i].length; k++) {
+                System.out.printf("%d) " + options[i][k], k + 1);
+                System.out.println();
+            }
+            check(options[i], keys[i]);
+        }
+
+    }
+
+    // РњРµС‚РѕРґ РїСЂРѕРІРµСЂСЏРµС‚, РїСЂР°РІРёР»СЊРЅС‹Р№ Р»Рё РѕС‚РІРµС‚:
+public static void check(String[] options, int key){
         int input;
         do {
             input = readInt(scanner.next());
-            if(input<1||input>numberOfOptions){
-                System.out.printf("Пожалуйста, введите число от 1 до %d!\n", numberOfOptions);
+            if(input<1||input>options.length){
+                System.out.printf("РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ 1 РґРѕ %d!\n", options.length);
                 input = -1;
             }
         } while (input==-1);
 
-        if (input==correctAnswer){
+        if (input==key+1){
             result++;
         }
 
