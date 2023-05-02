@@ -1,11 +1,12 @@
 package homework3;
 
-import static homework3.TestingLogic.*;
-
 public class Start {
+    public Start() {
+    }
+
     public static void main(String[] args) {
 
-// Заполняем данные теста
+        // Р—Р°РїРѕР»РЅСЏРµРј РёРЅС„РѕСЂРјР°С†РёСЋ С‚РµСЃС‚Р°
         Question question1 = new Question("The doctor ___ in the office.");
         question1.setOptions(new String[]{"am", "is", "are"});
         question1.setCorrectAnswer("is");
@@ -17,31 +18,30 @@ public class Start {
         question3.setCorrectAnswer("must have");
         Question[] questions = new Question[]{question1, question2, question3};
 
+        // РќР°С‡РёРЅР°РµРј С‚РµСЃС‚
 
-// Начинаем тест
-        System.out.println("Пройдите тест на определение уровня английского языка.");
-        System.out.println("Нажмите что-нибудь, чтобы продолжить...");
-        scanner.nextLine();
+        System.out.println("РџСЂРѕР№РґРёС‚Рµ С‚РµСЃС‚ РЅР° РѕРїСЂРµРґРµР»РµРЅРёРµ СѓСЂРѕРІРЅСЏ Р°РЅРіР»РёР№СЃРєРѕРіРѕ СЏР·С‹РєР°.");
+        System.out.println("РќР°Р¶РјРёС‚Рµ С‡С‚Рѕ-РЅРёР±СѓРґСЊ, С‡С‚РѕР±С‹ РїСЂРѕРґРѕР»Р¶РёС‚СЊ...");
+        TestingLogic.scanner.nextLine();
 
-        for (int i = 0; i < questions.length; i++) {
+        for (int i = 0; i < questions.length; ++i) {
             questions[i].print();
-            Answer answer = getAnswerFromUser(questions[i]);
+            Answer answer = TestingLogic.getAnswerFromUser(questions[i]);
             answer.check();
             if (answer.isCorrect()) {
-                result++;
+                ++TestingLogic.result;
             }
         }
 
-        // Результаты:
-        if (result == 0) {
-            System.out.println("Ваш уровень: А1. Вы только начинаете свой путь. Успехов в изучении!");
-        } else if (result == 1) {
-            System.out.println("Ваш уровень: А2. Вы уже кое-что знаете, но вам еще предстоит многое изучить.");
-        } else if (result == 2) {
-            System.out.println("Ваш уровень: B1. Вы можете уверенно вести беседы на английском на различные темы.");
-        } else if (result == 3) {
-            System.out.println("Поздравляем! Ваш уровень: C1. Вы свободно говорите на английском, но помните:" +
-                    " нет предела совершенству!");
+        // Р’С‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚
+        if (TestingLogic.result == 0) {
+            System.out.println("Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: Рђ1. Р’С‹ С‚РѕР»СЊРєРѕ РЅР°С‡РёРЅР°РµС‚Рµ СЃРІРѕР№ РїСѓС‚СЊ. РЈСЃРїРµС…РѕРІ РІ РёР·СѓС‡РµРЅРёРё!");
+        } else if (TestingLogic.result == 1) {
+            System.out.println("Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: Рђ2. Р’С‹ СѓР¶Рµ РєРѕРµ-С‡С‚Рѕ Р·РЅР°РµС‚Рµ, РЅРѕ РІР°Рј РµС‰Рµ РїСЂРµРґСЃС‚РѕРёС‚ РјРЅРѕРіРѕРµ РёР·СѓС‡РёС‚СЊ.");
+        } else if (TestingLogic.result == 2) {
+            System.out.println("Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: B1. Р’С‹ РјРѕР¶РµС‚Рµ СѓРІРµСЂРµРЅРЅРѕ РІРµСЃС‚Рё Р±РµСЃРµРґС‹ РЅР° Р°РЅРіР»РёР№СЃРєРѕРј РЅР° СЂР°Р·Р»РёС‡РЅС‹Рµ С‚РµРјС‹.");
+        } else if (TestingLogic.result == 3) {
+            System.out.println("РџРѕР·РґСЂР°РІР»СЏРµРј! Р’Р°С€ СѓСЂРѕРІРµРЅСЊ: C1. Р’С‹ СЃРІРѕР±РѕРґРЅРѕ РіРѕРІРѕСЂРёС‚Рµ РЅР° Р°РЅРіР»РёР№СЃРєРѕРј, РЅРѕ РїРѕРјРЅРёС‚Рµ: РЅРµС‚ РїСЂРµРґРµР»Р° СЃРѕРІРµСЂС€РµРЅСЃС‚РІСѓ!");
         }
 
     }

@@ -21,7 +21,7 @@ public class TestingLogic {
         do {
             input = readInt(scanner.next());
             if (input < 1 || input > question.getOptions().length) {
-                System.out.printf("Пожалуйста, введите число от 1 до %d!\n", question.getOptions().length);
+                System.out.printf("РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ 1 РґРѕ %d!\n", question.getOptions().length);
                 input = -1;
             }
         } while (input == -1);
