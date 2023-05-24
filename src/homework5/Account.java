@@ -4,24 +4,18 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Account {
-    private int id;
+    private final Client client;
     private BigDecimal gold;
-    private static int counter;
 
-    public Account(BigDecimal gold) {
-        counter++;
-        this.id = counter;
+    public Account(Client client, BigDecimal gold) {
+        this.client = client;
         this.gold = gold;
     }
 
-    public int getId() {
-        return this.id;
-    }
 
     @Override
     public String toString() {
-        return "ID аккаунта: " + id +
-                ", золотых монет: " + gold;
+        return "Золотых монет: " + gold;
     }
 
     @Override
@@ -29,11 +23,11 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return id == account.id && Objects.equals(gold, account.gold);
+        return Objects.equals(client, account.client) && Objects.equals(gold, account.gold);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, gold);
+        return Objects.hash(client, gold);
     }
 }

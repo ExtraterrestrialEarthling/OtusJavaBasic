@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Client {
-    private String name;
+    private final String name;
     private int age;
-    private int id;
-    private static int counter = 0;
-    private ArrayList<Account> accounts;
+    private final int id;
+    private final ArrayList<Account> accounts;
 
-    public Client(String name, int age) {
-        counter++;
+    public Client(String name, int age, int id) {
         this.name = name;
         this.age = age;
-        this.id = counter;
+        this.id = id;
         this.accounts = new ArrayList<>();
     }
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
         accounts.add(account);
     }
 

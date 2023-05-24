@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Bank {
-    private String name;
-    private Map<Account, Client> accountToClient;
-    private Map<Client, List<Account>> clientToAccount;
+    private final String name;
+    private final Map<Account, Client> accountToClient;
+    private final Map<Client, List<Account>> clientToAccount;
 
     public Bank(String name) {
         this.name = name;
@@ -16,23 +16,15 @@ public class Bank {
         this.clientToAccount = new HashMap<>();
     }
 
-    public void createAccount(Client client, BigDecimal gold) {
-        Account account = new Account(gold);
+    public Account createAccount(Client client, BigDecimal gold) {
+        Account account = new Account(client, gold);
         accountToClient.put(account, client);
 
         client.addAccount(account);
         clientToAccount.put(client, client.getAccounts());
-
+        return account;
     }
 
-    public Account getAccountById(int id) {
-        for (var entry : accountToClient.entrySet()) {
-            if (id == entry.getKey().getId()) {
-                return entry.getKey();
-            }
-        }
-        return null;
-    }
 
     //поиск аккаунтов - скорость O(1)
     public List<Account> getAccounts(Client client) {
