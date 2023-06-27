@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>
+Сайт с js
+</title>
+<style>
+        h1, h2, h3 {
+            color: steelblue;
+        }
+        
+        .students-tab {
+            border: 1px solid steelblue;
+            width: 450px;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        .students-tab tr td {
+            border: 1px solid steelblue;
+        }
+
+        .students-tab-col1 {
+            width: 450px;
+        }
+    </style>
+
+   
+
+<script>
+      
+        
+        function addStudent() {
+            const studentsTab = document.getElementById("studentsTab");
+            let studentName = document.getElementById("studentName").value;
+	    let gender = document.getElementById("gender").value;
+	    let dateOfBirth = document.getElementById("dateOfBirth").value;
+	    let age = function (){
+return Math.floor((new Date() - new Date(dateOfBirth)) / 1000 / 60 / 60 / 24 / 365);
+}()
+
+
+	    
+
+
+
+            
+            const newRow = studentsTab.insertRow(studentsTab.rows.length-2);
+            newCell = newRow.insertCell(0);
+            newCell.appendChild(document.createTextNode(studentName));
+            newCell = newRow.insertCell(1);
+            newCell.appendChild(document.createTextNode(gender));
+	    newCell = newRow.insertCell(2);
+            newCell.appendChild(document.createTextNode(dateOfBirth));
+	    newCell = newRow.insertCell(3);
+            newCell.appendChild(document.createTextNode(age));
+	    
+const averageRow = studentsTab.rows[studentsTab.rows.length - 1];
+const averageCell = averageRow.cells[averageRow.cells.length - 1];
+averageCell.innerText = averageAge();
+
+        }
+
+function averageAge() {
+let totalAge = 0;
+const studentsTab = document.getElementById("studentsTab");
+for (let i = 1; i < studentsTab.rows.length-2; i++){
+totalAge = totalAge + parseInt(studentsTab.rows[i].cells[3].textContent);
+}
+let averageAge = totalAge / (studentsTab.rows.length-3);
+return averageAge;
+};
+
+    
+    </script>
+
+</head>
+
+<body>
+
+<h2>
+Домашняя работа
+</h2>
+
+<h3>Таблица студентов</h3>
+
+
+<p>
+<div class = "input-form">
+<label>
+Имя студента:
+<input id = "studentName" type = "input">
+</label>
+</div>
+</p>
+
+<p>
+        <div class = "input-form">
+<label> 
+Пол:
+            <select name="gender" input id = "gender">
+                <option value="Мужской" selected>Мужской</option>
+                <option value="Женский">Женский</option>
+            </select>
+</label>
+        </div>
+</p>
+
+
+<p>
+        <div class = "input-form">
+<label>
+Дата рождения:
+            <input id="dateOfBirth" name="dateOfBirth" type="date">
+</label>
+        </div>
+</p>
+
+<p>
+<button onclick = "addStudent()">Добавить</button>
+</p>
+
+
+<table class="students-tab" id="studentsTab">
+    <thead>
+        <tr>
+            <td class="students-tab-col1">Имя</td>
+            <td class="students-tab-col1">Пол</td>
+            <td class="students-tab-col1">Дата рождения</td>
+	    <td class="students-tab-col1">Возраст</td>
+	  
+        </tr>
+         
+    </thead>
+    <tbody>
+        
+    </tbody>
+    <tfoot>
+       
+	<tr> 
+            <td colspan = "4">&nbsp;</td> 
+        </tr>  
+<tr>
+<td>Средний возраст студентов</td>
+<td colspan = "3" align = center>0</td>
+</tr>
+    </tfoot>
+</table>
+
+
+
+
+
+</body>
+</html>
