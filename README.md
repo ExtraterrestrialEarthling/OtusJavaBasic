@@ -1,2 +1,2 @@
 # OtusJavaBasic
-for homework
+for java homework
